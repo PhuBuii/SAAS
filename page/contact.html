@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/res.css" />
+  </head>
+  <body>
+    <section id="contact-section">
+      <div class="contact-header">
+        <h2>Liên hệ với chúng tôi</h2>
+        <p>
+          Liên hệ với chúng tôi để trải nghiệm những tính năng vượt trội của
+          [Tên App]
+        </p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="item-title">
+              <img
+                src="../assets/images/location-fill.svg"
+                alt="location icon"
+              />
+              <span>Địa chỉ</span>
+            </div>
+            <p class="item-detail">Số 1 Lê Hồng Phong, Phường 4, Đà Lạt</p>
+          </div>
+          <div class="contact-item">
+            <div class="item-title">
+              <img src="../assets/images/mail-fill.svg" alt="email icon" />
+              <span>Email</span>
+            </div>
+            <p class="item-detail">contact@yourdomain.com</p>
+          </div>
+          <div class="contact-item">
+            <div class="item-title">
+              <img src="../assets/images/phone-fill.svg" alt="phone icon" />
+              <span>Hotline</span>
+            </div>
+            <p class="item-detail">(+84) 90 123 4567</p>
+          </div>
+        </div>
+        <form action="submit" class="contact-form">
+          <div class="form-field">
+            <label for="fullname">Người liên hệ chính</label>
+            <input
+              id="fullname"
+              name="fullname"
+              placeholder="Nhập tên người liên hệ"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Số điện thoại</label>
+            <input
+              id="phone"
+              name="phone"
+              placeholder="Nhập số điện thoại"
+              inputmode="tel"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              placeholder="Nhập email"
+              type="email"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="need">Nhu cầu</label>
+            <textarea
+              id="need"
+              name="need"
+              placeholder="Nhu cầu của bạn"
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="contact-btn">
+              Gửi ngay
+              <span class="dot" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
