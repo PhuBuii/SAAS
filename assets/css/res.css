@@ -13,6 +13,32 @@
     max-width: 600px;
     margin: 0 auto;
   }
+  .erp-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-column-gap: 0;
+    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+  }
+
+  /* Reset các vị trí grid-area đã set cho desktop */
+  .erp-item {
+    grid-area: unset;
+    width: 100%;
+    height: auto; /* tránh mất chiều cao */
+    flex: none;
+  }
+  #erp-1,
+  #erp-2,
+  #erp-3,
+  #erp-4,
+  #erp-5,
+  #erp-6 {
+    grid-area: unset;
+  }
+  #erp-6 img {
+    top: 0%;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
@@ -89,6 +115,15 @@
   #contact-section .contact-info,
   #contact-section .contact-container .contact-form {
     width: 100%;
+  }
+  /*ERP*/
+  .erp-item-header h2 {
+    font-size: var(--Heading-H4-fontSize, 20px);
+    margin-bottom: 12px;
+  }
+  .erp-item-header p {
+    font-size: var(--Body-Body-2-fontSize, 15px);
+    opacity: 0.9;
   }
 }
 @media only screen and (max-width: 576px) {
