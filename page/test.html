@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bảng so sánh gói</title>
+    <style>
+      /* ====== Design tokens ====== */
+      :root {
+        --bg: #ffffff;
+        --text: #101828;
+        --muted: #667085;
+        --border: #eaecf0;
+        --row-alt: #fafafa;
+
+        --brand-standard: #16a34a; /* xanh lá */
+        --brand-premium: #f59e0b; /* cam */
+        --brand-unlimited: #2563eb; /* xanh dương */
+
+        --radius: 12px;
+        --shadow: 0 1px 2px rgba(16, 24, 40, 0.06),
+          0 1px 3px rgba(16, 24, 40, 0.08);
+      }
+
+      /* ====== Reset nhẹ & tiện ích ====== */
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 32px auto;
+        padding: 0 16px;
+      }
+
+      .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 16px;
+      }
+      .hint-scroll {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      /* ====== Card khung bảng ====== */
+      .table-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        background: #fff;
+      }
+
+      /* ====== Bảng ====== */
+      .table-wrap {
+        overflow-x: auto; /* mobile cuộn ngang */
+        -webkit-overflow-scrolling: touch;
+      }
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        min-width: 760px; /* cho 3 cột gói thoáng */
+      }
+      caption {
+        text-align: left;
+        padding: 16px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+      }
+      th,
+      td {
+        text-align: center;
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+      /* Cột đầu: tiêu chí */
+      .feat {
+        text-align: left;
+        color: var(--muted);
+        min-width: 220px;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: #fff;
+        border-right: 1px solid var(--border);
+      }
+      tbody tr:nth-child(odd) td,
+      tbody tr:nth-child(odd) .feat {
+        background: var(--row-alt);
+      }
+
+      /* ====== Header gói ====== */
+      .plan {
+        font-weight: 700;
+        font-size: 16px;
+      }
+      .plan--standard {
+        color: var(--brand-standard);
+      }
+      .plan--premium {
+        color: var(--brand-premium);
+      }
+      .plan--unlimited {
+        color: var(--brand-unlimited);
+      }
+
+      .trial-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        font-weight: 600;
+        font-size: 13px;
+        background: #fff;
+        cursor: pointer;
+      }
+      .trial-btn:hover {
+        box-shadow: var(--shadow);
+      }
+
+      /* tô viền top mỗi cột theo màu gói */
+      colgroup col:nth-child(2) {
+        border-top: 3px solid var(--brand-standard);
+      }
+      colgroup col:nth-child(3) {
+        border-top: 3px solid var(--brand-premium);
+      }
+      colgroup col:nth-child(4) {
+        border-top: 3px solid var(--brand-unlimited);
+      }
+      /* workaround cho viền top: dùng box-shadow ở ô tiêu đề */
+      thead th:nth-child(2) {
+        box-shadow: inset 0 3px 0 0 var(--brand-standard);
+      }
+      thead th:nth-child(3) {
+        box-shadow: inset 0 3px 0 0 var(--brand-premium);
+      }
+      thead th:nth-child(4) {
+        box-shadow: inset 0 3px 0 0 var(--brand-unlimited);
+      }
+
+      /* ====== Badge/giá trị ====== */
+      .value-muted {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .unlimit {
+        font-weight: 700;
+      }
+
+      /* ====== Icon check (SVG) đổi màu theo gói ====== */
+      .i {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+      .i--std {
+        color: var(--brand-standard);
+      }
+      .i--prm {
+        color: var(--brand-premium);
+      }
+      .i--unl {
+        color: var(--brand-unlimited);
+      }
+
+      /* ====== Responsive nhỏ hơn 480: font nhỏ hơn chút ====== */
+      @media (max-width: 480px) {
+        body {
+          font-size: 14px;
+        }
+        .feat {
+          min-width: 180px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="section-title">So sánh tính năng các gói</h1>
+      <p class="hint-scroll">↔ Kéo ngang để xem đủ cột trên màn hình nhỏ</p>
+
+      <div class="table-card">
+        <div class="table-wrap">
+          <table aria-describedby="Bảng so sánh gói">
+            <caption>
+              Bảng liệt kê số lượng & tính năng giữa 3 gói: Standard, Premium,
+              Unlimited.
+            </caption>
+
+            <colgroup>
+              <col style="width: 32%" />
+              <col style="width: 22%" />
+              <col style="width: 22%" />
+              <col style="width: 24%" />
+            </colgroup>
+
+            <thead>
+              <tr>
+                <th class="feat" scope="col">COMPARISONS</th>
+                <th scope="col">
+                  <div class="plan plan--standard">Gói Standard</div>
+                  <button class="trial-btn" type="button">
+                    Trải nghiệm miễn phí
+                  </button>
+                </th>
+                <th scope="col">
+                  <div class="plan plan--premium">Gói Premium</div>
+                  <button class="trial-btn" type="button">
+                    Trải nghiệm miễn phí
+                  </button>
+                </th>
+                <th scope="col">
+                  <div class="plan plan--unlimited">Gói Unlimited</div>
+                  <button class="trial-btn" type="button">
+                    Trải nghiệm miễn phí
+                  </button>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Số lượng -->
+              <tr>
+                <th class="feat" scope="row">Số lượng chi nhánh</th>
+                <td>3</td>
+                <td>10</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+              <tr>
+                <th class="feat" scope="row">Số lượng phòng ban</th>
+                <td>5</td>
+                <td>10</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+              <tr>
+                <th class="feat" scope="row">Số lượng tài khoản nhân viên</th>
+                <td>50</td>
+                <td>200</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+              <tr>
+                <th class="feat" scope="row">Số lượng khách hàng</th>
+                <td>1.000</td>
+                <td class="unlimit">Không giới hạn</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+              <tr>
+                <th class="feat" scope="row">Số lượng dịch vụ</th>
+                <td>10</td>
+                <td>20</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+              <tr>
+                <th class="feat" scope="row">Số lượng sản phẩm</th>
+                <td>10</td>
+                <td>50</td>
+                <td class="unlimit">Không giới hạn</td>
+              </tr>
+
+              <!-- Tính năng: dùng icon check màu theo gói -->
+              <tr>
+                <th class="feat" scope="row">Quản lý nhân viên</th>
+                <td aria-label="Có">
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td aria-label="Có">
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td aria-label="Có">
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Quản lý khách hàng</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Quản lý đơn hàng</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Quản lý lịch hẹn</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Quản lý kho</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Quản lý công việc</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Tài khoản hệ thống</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="feat" scope="row">Thống kê</th>
+                <td>
+                  <svg class="i i--std" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--prm" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+                <td>
+                  <svg class="i i--unl" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+                  </svg>
+                </td>
+              </tr>
+
+              <!-- Thêm các hàng khác tương tự... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1229,3 +1229,204 @@
   margin-top: 40px;
   top: 0%;
 }
+
+/*Compare table*/
+#compare-table-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 0px;
+}
+.compare-table-header h2 {
+  color: var(--neutral-800, #262626);
+  text-align: center;
+  font-family: var(--Title-Title-3-fontFamily, Manrope-Bold);
+  font-size: var(--Title-Title-3-fontSize, 32px);
+  font-style: normal;
+  font-weight: var(--Weights-Bold, 700);
+  line-height: var(--Title-Title-3-lineHeight, 36px);
+  letter-spacing: var(--Title-Title-3-letterSpacing, -0.6px);
+  margin-bottom: 64px;
+}
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.pricing {
+  min-width: 980px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.pricing th,
+.pricing td {
+  white-space: nowrap;
+}
+
+.pricing thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+tr td,
+tr th {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+  color: var(--neutral-800, #262626);
+  text-align: center;
+
+  font-family: var(--Body-Body-1-fontFamily, Manrope-Regular);
+  font-size: var(--Body-Body-1-fontSize, 17px);
+  font-style: normal;
+  font-weight: var(--Weights-Regular, 400);
+  line-height: var(--Body-Body-1-lineHeight, 28px); /* 164.706% */
+  letter-spacing: var(--Body-Body-1-letterSpacing, 0);
+}
+.pricing .label-col {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  padding-left: 10px;
+  z-index: 2;
+  background: #fff;
+  border-right: 1px solid var(--border, #eaecf0);
+  box-shadow: 2px 0 0 rgba(0, 0, 0, 0.02);
+}
+thead .label-col {
+  vertical-align: bottom;
+  padding-bottom: 20px;
+}
+.table-scroll::before,
+.table-scroll::after {
+  content: "";
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  z-index: 3;
+  pointer-events: none;
+}
+.table-scroll::before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 30%, rgba(255, 255, 255, 0));
+}
+.table-scroll::after {
+  float: right;
+  right: 0;
+  background: linear-gradient(270deg, #fff 30%, rgba(255, 255, 255, 0));
+}
+.plan {
+  text-align: center;
+  font-weight: 800;
+  white-space: nowrap;
+  font-family: var(--Heading-H2-fontFamily, Manrope-Bold);
+  font-size: var(--Heading-H2-fontSize, 26px);
+  font-style: normal;
+  font-weight: var(--Weights-ExtraBold, 800);
+  line-height: var(--Heading-H2-lineHeight, 30px);
+  letter-spacing: var(--Heading-H2-letterSpacing, -0.26px);
+}
+.plan--standard {
+  color: var(--green-700, #15803d);
+}
+.plan--premium {
+  color: var(--amber-500, #f59e0b);
+}
+.plan--unlimited {
+  color: var(--blue-700, #1d4ed8);
+}
+.plan-header {
+  display: flex;
+  flex-direction: column; /* xếp dọc */
+  align-items: center; /* căn giữa ngang */
+  gap: 16px; /* khoảng cách giữa chữ và nút */
+}
+
+/* nút */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid #ededed;
+  padding: 10px 20px;
+  color: var(--neutral-800, #262626);
+  font-family: Inter, sans-serif;
+  font-size: 18.594px;
+  font-weight: 500;
+  line-height: 30px;
+  text-decoration: none;
+  background-color: #fff;
+
+  transition: all 0.25s ease;
+  will-change: transform, box-shadow, background-color, color;
+}
+
+.badge--premium {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Hover: Standard & Unlimited */
+.badge:not(.badge--premium):hover {
+  background-color: #f9fafb; /* nền sáng nhẹ */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Hover: Premium */
+.badge--premium:hover {
+  background-color: #111; /* sáng hơn */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px) scale(1.02);
+}
+.badge--premium:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.4);
+  border-radius: 16px;
+}
+
+/* mọi TD ăn màu từ biến --accent gắn ở <col> tương ứng */
+.pricing td {
+  color: var(--accent, inherit);
+}
+
+/* icon tick 1 file SVG làm mask */
+.yes::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+.no::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../images/x.svg");
+}
+.standard-row.yes::before {
+  background-image: url("../images/tick-green.svg");
+}
+.premium-row.yes::before {
+  background-image: url("../images/tick-yellow.svg");
+}
+.unlimited-row.yes::before {
+  background-image: url("../images/tick-blue.svg");
+}
+/* Nền sáng hơn khi hover dòng */
+.pricing tbody tr:hover td,
+.pricing tbody tr:hover th.label-col {
+  background-color: #f9fafb;
+}
+.pricing tbody tr {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pricing tbody tr:hover {
+  background-color: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
