@@ -1,6 +1,7 @@
 @media only screen and (max-width: 1200px) {
   #crm-section,
   #hrm-section,
+  #work-section,
   #features-section,
   #contact-section,
   #erp-section,
@@ -153,12 +154,34 @@
   #hrm-3 {
     grid-area: unset;
   }
+  .work-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+    grid-row-gap: 28px;
+  }
+  .work-item {
+    grid-row-start: unset;
+    grid-column-start: unset;
+    grid-row-end: unset;
+    grid-column-end: unset;
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+  #work-1,
+  #work-2,
+  #work-3 {
+    grid-area: unset;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 876px) {
   #crm-section,
   #hrm-section,
+  #work-section,
   #pos-section,
   #features-section,
   #contact-section,
@@ -284,9 +307,23 @@
     font-size: var(--Body-Body-2-fontSize, 15px);
     opacity: 0.9;
   }
+
+  /*WORK*/
+  .work-content {
+    margin-top: 98px;
+  }
+  .work-item-header h2 {
+    font-size: var(--Heading-H4-fontSize, 20px);
+    margin-bottom: 12px;
+  }
+  .work-item-header p {
+    font-size: var(--Body-Body-2-fontSize, 15px);
+    opacity: 0.9;
+  }
 }
 @media only screen and (max-width: 576px) {
   #crm-section,
+  #work-section,
   #hrm-section,
   #pos-section,
   #features-section,
