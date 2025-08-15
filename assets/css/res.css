@@ -1,5 +1,6 @@
 @media only screen and (max-width: 1200px) {
   #crm-section,
+  #hrm-section,
   #features-section,
   #contact-section,
   #erp-section,
@@ -23,15 +24,14 @@
   .erp-content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-template-rows: auto;
     grid-column-gap: 0;
-    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+    grid-row-gap: 28px;
   }
 
-  /* Reset các vị trí grid-area đã set cho desktop */
   .erp-item {
     width: 100%;
-    height: auto; /* tránh mất chiều cao */
+    height: auto;
     flex: none;
   }
   #erp-1,
@@ -71,9 +71,9 @@
   .crm-content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-template-rows: auto;
     grid-column-gap: 0;
-    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+    grid-row-gap: 28px;
   }
   .crm-item {
     grid-row-start: unset;
@@ -81,7 +81,7 @@
     grid-row-end: unset;
     grid-column-end: unset;
     width: 100%;
-    height: auto; /* tránh mất chiều cao */
+    height: auto;
     flex: none;
   }
   #crm-1,
@@ -112,9 +112,9 @@
   .pos-content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-template-rows: auto;
     grid-column-gap: 0;
-    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+    grid-row-gap: 28px;
   }
   .pos-item {
     grid-row-start: unset;
@@ -122,7 +122,7 @@
     grid-row-end: unset;
     grid-column-end: unset;
     width: 100%;
-    height: auto; /* tránh mất chiều cao */
+    height: auto;
     flex: none;
   }
   #pos-1,
@@ -132,11 +132,33 @@
   #pos-5 {
     grid-area: unset;
   }
+  .hrm-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+    grid-row-gap: 28px;
+  }
+  .hrm-item {
+    grid-row-start: unset;
+    grid-column-start: unset;
+    grid-row-end: unset;
+    grid-column-end: unset;
+    width: 100%;
+    height: auto;
+    flex: none;
+  }
+  #hrm-1,
+  #hrm-2,
+  #hrm-3 {
+    grid-area: unset;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 876px) {
   #crm-section,
+  #hrm-section,
   #pos-section,
   #features-section,
   #contact-section,
@@ -182,7 +204,6 @@
   }
 
   /*Contact section*/
-
   #contact-section .contact-header h2 {
     font-size: var(--Heading-H1-fontSize, 28px);
     line-height: var(--Heading-H1-lineHeight, 32px); /* 114.286% */
@@ -211,8 +232,8 @@
   #contact-section .contact-container .contact-form {
     width: 100%;
   }
-  /*ERP*/
 
+  /*ERP*/
   .erp-content {
     margin-top: 98px;
   }
@@ -224,8 +245,8 @@
     font-size: var(--Body-Body-2-fontSize, 15px);
     opacity: 0.9;
   }
-  /*CRM*/
 
+  /*CRM*/
   .crm-content {
     margin-top: 98px;
   }
@@ -239,7 +260,6 @@
   }
 
   /*POS*/
-
   .pos-content {
     margin-top: 98px;
   }
@@ -251,9 +271,23 @@
     font-size: var(--Body-Body-2-fontSize, 15px);
     opacity: 0.9;
   }
+
+  /*HRM*/
+  .hrm-content {
+    margin-top: 98px;
+  }
+  .hrm-item-header h2 {
+    font-size: var(--Heading-H4-fontSize, 20px);
+    margin-bottom: 12px;
+  }
+  .hrm-item-header p {
+    font-size: var(--Body-Body-2-fontSize, 15px);
+    opacity: 0.9;
+  }
 }
 @media only screen and (max-width: 576px) {
   #crm-section,
+  #hrm-section,
   #pos-section,
   #features-section,
   #contact-section,
