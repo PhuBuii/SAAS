@@ -2,7 +2,8 @@
   #crm-section,
   #features-section,
   #contact-section,
-  #erp-section {
+  #erp-section,
+  #pos-section {
     padding: 60px;
   }
 
@@ -108,11 +109,35 @@
     margin-top: 40px;
     top: 0%;
   }
+  .pos-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-column-gap: 0;
+    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+  }
+  .pos-item {
+    grid-row-start: unset;
+    grid-column-start: unset;
+    grid-row-end: unset;
+    grid-column-end: unset;
+    width: 100%;
+    height: auto; /* tránh mất chiều cao */
+    flex: none;
+  }
+  #pos-1,
+  #pos-2,
+  #pos-3,
+  #pos-4,
+  #pos-5 {
+    grid-area: unset;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 876px) {
   #crm-section,
+  #pos-section,
   #features-section,
   #contact-section,
   #erp-section {
@@ -212,9 +237,24 @@
     font-size: var(--Body-Body-2-fontSize, 15px);
     opacity: 0.9;
   }
+
+  /*POS*/
+
+  .pos-content {
+    margin-top: 98px;
+  }
+  .pos-item-header h2 {
+    font-size: var(--Heading-H4-fontSize, 20px);
+    margin-bottom: 12px;
+  }
+  .pos-item-header p {
+    font-size: var(--Body-Body-2-fontSize, 15px);
+    opacity: 0.9;
+  }
 }
 @media only screen and (max-width: 576px) {
   #crm-section,
+  #pos-section,
   #features-section,
   #contact-section,
   #erp-section {
