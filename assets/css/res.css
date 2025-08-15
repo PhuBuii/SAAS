@@ -1,4 +1,11 @@
 @media only screen and (max-width: 1200px) {
+  #crm-section,
+  #features-section,
+  #contact-section,
+  #erp-section {
+    padding: 60px;
+  }
+
   #features-section .features-content,
   #features-section .features-content-reverse {
     gap: 24px;
@@ -10,7 +17,6 @@
   #features-section .features-text,
   #features-section .features-image {
     width: 100%;
-    max-width: 600px;
     margin: 0 auto;
   }
   .erp-content {
@@ -23,7 +29,6 @@
 
   /* Reset các vị trí grid-area đã set cho desktop */
   .erp-item {
-    grid-area: unset;
     width: 100%;
     height: auto; /* tránh mất chiều cao */
     flex: none;
@@ -34,9 +39,26 @@
   #erp-4,
   #erp-5,
   #erp-6 {
-    grid-area: unset;
+    grid-row-start: unset;
+    grid-column-start: unset;
+    grid-row-end: unset;
+    grid-column-end: unset;
   }
+  #erp-1 .erp-item-header,
+  #erp-2 .erp-item-header,
+  #erp-3 .erp-item-header,
+  #erp-4 .erp-item-header,
+  #erp-5 .erp-item-header,
+  #erp-6 .erp-item-header {
+    padding-bottom: 0;
+  }
+  #erp-1 img,
+  #erp-2 img,
+  #erp-3 img,
+  #erp-4 img,
+  #erp-5 img,
   #erp-6 img {
+    margin-top: 40px;
     top: 0%;
   }
   .desktop {
@@ -45,16 +67,59 @@
   .mobile {
     display: block;
   }
+  .crm-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; /* để chiều cao theo nội dung */
+    grid-column-gap: 0;
+    grid-row-gap: 28px; /* giữ khoảng cách dọc */
+  }
+  .crm-item {
+    grid-row-start: unset;
+    grid-column-start: unset;
+    grid-row-end: unset;
+    grid-column-end: unset;
+    width: 100%;
+    height: auto; /* tránh mất chiều cao */
+    flex: none;
+  }
+  #crm-1,
+  #crm-2,
+  #crm-3,
+  #crm-4,
+  #crm-5,
+  #crm-6 {
+    grid-area: unset;
+  }
+  #crm-1 .crm-item-header,
+  #crm-2 .crm-item-header,
+  #crm-3 .crm-item-header,
+  #crm-4 .crm-item-header,
+  #crm-5 .crm-item-header,
+  #crm-6 .crm-item-header {
+    padding-bottom: 0;
+  }
+  #crm-1 img,
+  #crm-2 img,
+  #crm-3 img,
+  #crm-4 img,
+  #crm-5 img,
+  #crm-6 img {
+    margin-top: 40px;
+    top: 0%;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
 @media only screen and (max-width: 876px) {
+  #crm-section,
+  #features-section,
+  #contact-section,
+  #erp-section {
+    padding: 60px 32px;
+  }
 }
 @media only screen and (max-width: 768px) {
-  #features-section {
-    padding: 48px 16px;
-  }
-
   #features-section .features-header {
     margin-bottom: 24px;
   }
@@ -92,9 +157,7 @@
   }
 
   /*Contact section*/
-  #contact-section {
-    padding: 48px 16px;
-  }
+
   #contact-section .contact-header h2 {
     font-size: var(--Heading-H1-fontSize, 28px);
     line-height: var(--Heading-H1-lineHeight, 32px); /* 114.286% */
@@ -124,9 +187,7 @@
     width: 100%;
   }
   /*ERP*/
-  #erp-section {
-    padding: 48px 16px;
-  }
+
   .erp-content {
     margin-top: 98px;
   }
@@ -138,8 +199,27 @@
     font-size: var(--Body-Body-2-fontSize, 15px);
     opacity: 0.9;
   }
+  /*CRM*/
+
+  .crm-content {
+    margin-top: 98px;
+  }
+  .crm-item-header h2 {
+    font-size: var(--Heading-H4-fontSize, 20px);
+    margin-bottom: 12px;
+  }
+  .crm-item-header p {
+    font-size: var(--Body-Body-2-fontSize, 15px);
+    opacity: 0.9;
+  }
 }
 @media only screen and (max-width: 576px) {
+  #crm-section,
+  #features-section,
+  #contact-section,
+  #erp-section {
+    padding: 48px 16px;
+  }
 }
 @media only screen and (max-width: 438px) {
 }
