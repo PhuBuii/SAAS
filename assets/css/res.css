@@ -39,6 +39,12 @@
   #erp-6 img {
     top: 0%;
   }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
 }
 @media only screen and (max-width: 1024px) {
 }
@@ -48,6 +54,7 @@
   #features-section {
     padding: 48px 16px;
   }
+
   #features-section .features-header {
     margin-bottom: 24px;
   }
@@ -117,6 +124,12 @@
     width: 100%;
   }
   /*ERP*/
+  #erp-section {
+    padding: 48px 16px;
+  }
+  .erp-content {
+    margin-top: 98px;
+  }
   .erp-item-header h2 {
     font-size: var(--Heading-H4-fontSize, 20px);
     margin-bottom: 12px;

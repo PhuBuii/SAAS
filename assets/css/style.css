@@ -80,7 +80,14 @@
 #features-section .features-image {
   width: 40%;
   border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
 }
+
+#features-section .features-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
 #features-section .features-items {
   display: flex;
   flex-direction: column;
@@ -202,11 +209,28 @@
   margin-top: 48px;
   width: 100%;
   display: grid;
+  position: relative;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 408px);
   grid-column-gap: 28px;
   grid-row-gap: 28px;
 }
+.erp-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw; /* full ngang */
+  height: 100%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.erp-content > .erp-item {
+  position: relative;
+  z-index: 1;
+}
+
 .erp-item {
   display: flex;
   position: relative;
@@ -223,7 +247,15 @@
     0 2.29px 11.451px -1.667px rgba(0, 0, 0, 0.1),
     0 10px 50px -2.5px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+
+.erp-item:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
 .erp-item img {
   width: 100%;
   position: relative;
@@ -283,6 +315,12 @@
 }
 #erp-6 img {
   top: -25%;
+}
+.desktop {
+  display: block;
+}
+.mobile {
+  display: none;
 }
 /*Contact section*/
 #contact-section {
